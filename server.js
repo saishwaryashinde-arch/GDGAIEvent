@@ -500,7 +500,7 @@ app.post('/api/render-garment', async (req, res) => {
     // 2. If Gemini client available, try live generative image generation (Imagen 3)
     if (client) {
       try {
-        const renderPrompt = customStylePrompt || `A high-end editorial fashion lookbook photograph of a model with a ${bodyShape} body profile, wearing an exquisitely tailored ${styling.silhouette_name || 'wrap dress'}. The garment is crafted in rich ${color.name} (${color.hex}) fabric (${styling.recommended_fabrics || 'silk crepe'}), featuring ${styling.pattern_advice || 'fine couture details'}. Photographed in an elegant studio with soft natural directional lighting, showcasing the exact drape, hemline, and waistline contour. Crisp 8k photo, clean aesthetic.`;
+        const renderPrompt = customStylePrompt || `Using a glossy white 3D CAD fashion mannequin standing on a studio perspective grid floor with soft lighting, render the mannequin wearing a tailored ${styling.silhouette_name || 'A-line dress'} in ${color.name} (${color.hex}) fabric. Realistic 3D cloth physics simulation, natural gravity drape folds and skirt fluting ripples, clean princess seams, and waistline definition, CLO 3D digital apparel rendering style, ultra-clean studio background.`;
 
         const imageResponse = await client.models.generateImages({
           model: 'imagen-3.0-generate-002',

@@ -322,13 +322,11 @@ def render_virtual_tryon(
     primary_color = color_profile.best_colors[0]
     
     prompt = (
-        f"A high-end editorial fashion lookbook photograph of a female model with a "
-        f"{measurements.body_shape_type} body profile, wearing an exquisitely tailored "
-        f"{styling.silhouette_name}. The garment is crafted in luxurious {primary_color.name} "
-        f"({primary_color.hex}) {styling.recommended_fabrics.split(',')[0]} fabric, featuring "
-        f"{styling.pattern_advice}. Photographed in a prestigious fashion studio with soft natural "
-        f"directional lighting, showing the exact drape, hemline, and waistline contour. "
-        f"Ultra-crisp 8k lookbook photo, minimalist aesthetic."
+        f"Using a glossy white 3D CAD fashion mannequin standing on a studio perspective grid floor, "
+        f"render the mannequin wearing a tailored {styling.silhouette_name} in {primary_color.name} "
+        f"({primary_color.hex}) {styling.recommended_fabrics.split(',')[0]} fabric. "
+        f"Realistic 3D cloth physics simulation, natural gravity drape folds and skirt fluting ripples, "
+        f"clean princess seams, and waistline definition, CLO 3D digital apparel rendering style, ultra-clean studio background."
     )
 
     print(f"Generating Imagen 3 Lookbook with prompt:\n{prompt}\n")

@@ -163,19 +163,22 @@ document.addEventListener('DOMContentLoaded', () => {
       radio.closest('.ref-option').classList.toggle('active', radio.checked);
     });
 
-    // Set front preview to preset lookbook photo
-    if (preset.renderImageUrl) {
-      frontPreview.src = preset.renderImageUrl;
-      frontPreview.classList.remove('hidden');
-      frontDropzoneContent.classList.add('hidden');
-      btnClearFront.classList.remove('hidden');
-    }
+    // Set front and side previews to 3D Mannequin photos
+    frontPreview.src = '/assets/mannequin/mannequin_front.png';
+    frontPreview.classList.remove('hidden');
+    frontDropzoneContent.classList.add('hidden');
+    btnClearFront.classList.remove('hidden');
 
-    // Set matching editorial prompt
+    sidePreview.src = '/assets/mannequin/mannequin_side.png';
+    sidePreview.classList.remove('hidden');
+    sideDropzoneContent.classList.add('hidden');
+    btnClearSide.classList.remove('hidden');
+
+    // Set matching 3D CAD simulation prompts
     const prompts = {
-      'preset-autumn-hourglass': 'A high-end studio editorial fashion photograph of a woman with an hourglass body profile wearing a tailored terracotta rust wrap midi dress with a defined belted waist, elegant V-neckline, soft flowing A-line skirt, luxury fabric drape, professional lookbook photography, studio lighting, clean minimalist background.',
-      'preset-winter-pear': 'A high-end studio editorial fashion photograph of a woman with a pear-shaped body profile wearing an elegant royal cobalt blue boat-neck structured shoulder A-line midi dress. Flattering fit that balances shoulders and hips, clean modern tailoring, high-fashion catalog lighting, crisp details, minimalist grey studio background.',
-      'preset-spring-rectangle': 'A high-end studio editorial fashion photograph of an athletic female model wearing an elegant bright coral pleated wrap dress with waist definition and tailored collar. Clean dynamic silhouette, modern couture styling, soft studio fashion lighting, clean minimal background.'
+      'preset-autumn-hourglass': 'Using a glossy white 3D CAD fashion mannequin standing on a studio perspective grid floor, render the mannequin wearing a tailored luxury Terracotta Rust (#C85A32) A-line midi dress with sash belt. Realistic 3D cloth simulation, delicate fabric drape ripples, natural folds, clean princess seams, CLO 3D digital apparel rendering style, ultra-clean studio background.',
+      'preset-winter-pear': 'Using a glossy white 3D CAD fashion mannequin standing on a studio perspective grid floor, render the mannequin wearing an elegant Royal Cobalt Blue (#0047AB) structured A-line dress. Realistic 3D cloth physics simulation, clean princess seams, subtle fabric drape folds and fluting, CLO 3D digital apparel rendering style, ultra-clean studio background.',
+      'preset-spring-rectangle': 'Using a glossy white 3D CAD fashion mannequin standing on a studio perspective grid floor, render the mannequin wearing an elegant Bright Coral (#FF6F61) pleated midi dress with cinched waist. Realistic 3D cloth physics simulation, clean seam lines, fluid pleated skirt drape ripples, CLO 3D digital apparel rendering style, ultra-clean studio background.'
     };
     if (prompts[presetId]) {
       renderPromptInput.value = prompts[presetId];
@@ -401,7 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (json.success) {
         if (json.imageUrl) {
           renderCanvasWrap.innerHTML = `<img src="${json.imageUrl}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;" alt="Virtual Try-On Render">`;
-          document.getElementById('renderEngineBadge').textContent = json.source === 'imagen-3.0' ? 'Imagen 3 Generative Render' : 'High-Fashion Lookbook Render';
+          document.getElementById('renderEngineBadge').textContent = '3D Digital Twin • Cloth Physics Simulation';
         } else if (json.svgContent) {
           renderCanvasWrap.innerHTML = json.svgContent;
           document.getElementById('renderEngineBadge').textContent = 'Studio Drape Visualizer';
