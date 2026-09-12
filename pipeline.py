@@ -121,7 +121,7 @@ def extract_body_measurements(
     contents.append(prompt)
 
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model="gemini-3.6-flash",
         contents=contents,
         config=types.GenerateContentConfig(
             response_mime_type="application/json",
@@ -169,7 +169,7 @@ def perform_color_analysis(image_path: str) -> ColorAnalysisResult:
     """
 
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model="gemini-3.6-flash",
         contents=[img, prompt],
         config=types.GenerateContentConfig(
             response_mime_type="application/json",
@@ -213,7 +213,7 @@ def recommend_silhouette_and_styling(
     """
 
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model="gemini-3.6-flash",
         contents=[prompt],
         config=types.GenerateContentConfig(
             response_mime_type="application/json",

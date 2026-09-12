@@ -428,13 +428,32 @@ Return ONLY a valid JSON object matching this schema:
 
     parts.push({ text: promptText });
 
-    const response = await client.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: parts,
-      config: {
-        responseMimeType: 'application/json'
+    const candidateModels = ['gemini-3.6-flash', 'gemini-3.7-flash', 'gemini-flash-latest'];
+    let response = null;
+    let lastError = null;
+
+    for (const modelName of candidateModels) {
+      try {
+        response = await client.models.generateContent({
+          model: modelName,
+          contents: parts,
+          config: {
+            responseMimeType: 'application/json'
+          }
+        });
+        if (response && response.text) {
+          console.log(`Successfully generated analysis using model: ${modelName}`);
+          break;
+        }
+      } catch (mErr) {
+        console.warn(`Model ${modelName} failed:`, mErr.message);
+        lastError = mErr;
       }
-    });
+    }
+
+    if (!response || !response.text) {
+      throw lastError || new Error('Failed to generate content with available Gemini models');
+    }
 
     const parsedData = JSON.parse(response.text.trim());
     return res.json({
