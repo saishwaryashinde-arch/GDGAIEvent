@@ -2,6 +2,8 @@
 
 An end-to-end AI fashion, anthropometry, colorimetry, and digital tailoring application built for the Google Developer Groups (GDG) AI Event.
 
+Link: https://chelseahai.github.io/hackathon/web/presentation-workflow/?v=vonage2#title
+
 ---
 
 ## 🌟 Workflow Pipeline
@@ -25,17 +27,4 @@ An end-to-end AI fashion, anthropometry, colorimetry, and digital tailoring appl
 
 ---
 
-## 🚀 Quick Start
 
-### 1. Requirements
-- Node.js (v18+)
-
-### 2. Run the Application
-```bash
-npm start
-```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### 3. Testing Modes
-- **Demo / Simulation Mode:** Ready out-of-the-box! Switch between 3 quick-test presets (Hourglass, Pear, Athletic) to demonstrate the entire workflow without an API key.
-- **Live Gemini Mode:** Click **🔑 API Key Settings** in the navbar and enter your `GEMINI_API_KEY` (or set `GEMINI_API_KEY=your_key` in a `.env` file) to run live Gemini 2.5 Flash multimodal anthropometry and Imagen 3 garment rendering.
